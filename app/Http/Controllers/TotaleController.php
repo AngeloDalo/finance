@@ -33,7 +33,10 @@ class TotaleController extends Controller
      */
     public function create()
     {
-        //
+        $groups = Group::all();
+        $sections = Section::all();
+        $types = Type::all();
+        return view('admin.transactions.create', ['groups' => $groups, 'types' => $types, 'sections' => $sections]);
     }
 
     /**
@@ -44,7 +47,24 @@ class TotaleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+        $type =Type::select('name')->where('id', $data['types'][0])->first();
+        dd($type);
+        $validateData = $request->validate([
+            'name' => 'required|max:255',
+            'price' => 'required',
+            'date' => 'required',
+            'types.*' => 'nullable|exists:App\Type,id',
+            'sections.*' => 'nullable|exists:App\Section,id',
+            'groups.*' => 'nullable|exists:App\Group,id',
+        ]);
+        $transaction = new Transaction();
+        $transaction->fill($data);
+        $transaction->type_id = $data['types'][0];
+        $transaction->section_id = $data['sections'][0];
+        $transaction->group_id = $data['groups'][0];
+        $transaction->save();
+        return redirect()->route('transactions.show', $transaction->id);
     }
 
     /**
@@ -53,9 +73,9 @@ class TotaleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Transaction $transaction)
     {
-        //
+        return view('admin.transactions.show', ['transaction' => $transaction]);
     }
 
     /**

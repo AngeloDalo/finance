@@ -8,7 +8,8 @@
   <!-- CSRF Token -->
   <meta name="csrf-token" content="{{ csrf_token() }}">
 
-  <title>{{ config('app.name', 'Laravel') }}</title>
+  <title>TotoFinance</title>
+  <link rel="icon" type="image/x-icon" href="Cattura.ico">
 
   <!-- Scripts -->
   <script src="{{ asset('js/app.js') }}" defer></script>
@@ -19,9 +20,9 @@
 
 <body>
     <div id="app">
-        <div class="row">
+        <div class="row justify-content-between">
             <div class="col-2">
-                <nav id='sidebarMenu' class='col-sm-12 col-md-12 col-lg-2 bg-light sidebar me-5'>
+                <nav id='sidebarMenu' class='bg-light sidebar me-5'>
                     <div class="d-flex flex-column flex-shrink-0 p-3 bg-light border border-success rounded-3" style="position: fixed; height: 100%">
                       <ul class="nav nav-pills flex-column mb-auto">
                         <li>
@@ -40,7 +41,7 @@
                     </div>
                   </nav>
             </div>
-            <div class="col-10">
+            <div class="col-9 mt-5">
                 @yield('content')
             </div>
         </div>
