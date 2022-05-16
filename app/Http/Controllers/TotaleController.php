@@ -23,7 +23,10 @@ class TotaleController extends Controller
     public function index()
     {
         $transactions = Transaction::all();
-        return view('admin.transactions.index', ['transactions' => $transactions]);
+        $groups = Group::all();
+        $sections = Section::all();
+        $types = Type::all();
+        return view('admin.transactions.index', ['transactions' => $transactions, 'groups' => $groups, 'types' => $types, 'sections' => $sections]);
     }
 
     /**
@@ -48,8 +51,12 @@ class TotaleController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
-        $type =Type::select('name')->where('id', $data['types'][0])->first();
-        dd($type);
+        $type = Type::select('name')->where('id', $data['types'][0])->first();
+        $type = $type->name;
+        $section = Section::select('name')->where('id', $data['sections'][0])->first();
+        $section = $section->name;
+        $group = Group::select('name')->where('id', $data['groups'][0])->first();
+        $group = $group->name;
         $validateData = $request->validate([
             'name' => 'required|max:255',
             'price' => 'required',
@@ -64,7 +71,7 @@ class TotaleController extends Controller
         $transaction->section_id = $data['sections'][0];
         $transaction->group_id = $data['groups'][0];
         $transaction->save();
-        return redirect()->route('transactions.show', $transaction->id);
+        return view('admin.transactions.show', ['transaction' => $transaction, 'group' => $group, 'type' => $type, 'section' => $section]);
     }
 
     /**
@@ -75,7 +82,13 @@ class TotaleController extends Controller
      */
     public function show(Transaction $transaction)
     {
-        return view('admin.transactions.show', ['transaction' => $transaction]);
+        $type = Type::select('name')->where('id', $transaction->type_id)->first();
+        $type = $type->name;
+        $section = Section::select('name')->where('id', $transaction->section_id)->first();
+        $section = $section->name;
+        $group = Group::select('name')->where('id', $transaction->group_id)->first();
+        $group = $group->name;
+        return view('admin.transactions.show', ['transaction' => $transaction, 'group' => $group, 'type' => $type, 'section' => $section]);
     }
 
     /**

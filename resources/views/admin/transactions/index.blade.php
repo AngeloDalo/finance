@@ -35,11 +35,78 @@
                         @foreach ($transactions as $transaction)
                             <tr>
                                 <td>{{ $transaction->name }}</td>
-                                <td>{{ $transaction->section_id}}</td>
+                                <td>
+                                    @switch($transaction->section_id)
+                                    @case(1)
+                                        Amazon
+                                        @break
+                                    @case(2)
+                                        Gas
+                                        @break
+                                    @case(3)
+                                        Benzina
+                                        @break
+                                    @case(4)
+                                        Luce
+                                        @break
+                                    @case(5)
+                                        Amashop
+                                        @break
+                                    @case(6)
+                                        Manutenzione Auto
+                                        @break
+                                    @case(7)
+                                        Pensione
+                                        @break
+                                    @case(8)
+                                        Mutup
+                                        @break
+                                    @case(9)
+                                        Rata
+                                        @break
+                                    @case(10)
+                                        Manutenzione Campagna
+                                        @break
+                                    @case(11)
+                                        Manutenzione Attrezzature Campagna
+                                        @break
+                                    @case(12)
+                                        Lavori Campagna
+                                        @break
+                                    @default
+                                        Altro
+                                @endswitch
+                                </td>
                                 <td>{{ $transaction->price }}&euro;</td>
-                                <td>{{ $transaction->type_id }}</td>
+                                <td>
+                                    @switch($transaction->type_id)
+                                    @case(1)
+                                        Entrata
+                                        @break
+
+                                    @case(2)
+                                        Uscita
+                                        @break
+
+                                    @default
+                                        Altro
+                                    @endswitch
+                                </td>
                                 <td>{{ $transaction->date }}</td>
-                                <td>{{ $transaction->group_id}}</td>
+                                <td>
+                                    @switch($transaction->group_id)
+                                    @case(1)
+                                        Casa
+                                        @break
+
+                                    @case(2)
+                                        Campagna
+                                        @break
+
+                                    @default
+                                        Altro
+                                    @endswitch
+                                </td>
                                 <td><a class="btn btn-success text-white"
                                         href="{{ route('transactions.show', $transaction->id) }}">VEDI</a></td>
                                 <td>

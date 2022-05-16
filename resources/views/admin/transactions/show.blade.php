@@ -16,10 +16,10 @@
                 <div class="d-flex flex-column">
                     <h3 class="card-title text-success">{{ $transaction->name }}</h3>
                     <span class="mb-2"><span class="fw-bold text-uppercase">Nome: </span> {{ $transaction->name }}</span>
-                    <span class="mb-2"><span class="fw-bold text-uppercase">Categoria: </span> {{ $transaction->section_id }}</span>
+                    <span class="mb-2"><span class="fw-bold text-uppercase">Categoria: </span> {{ $section }}</span>
                     <span class="mb-2"><span class="fw-bold text-uppercase">Prezzo: </span> {{ $transaction->price }}&euro;</span>
-                    <span class="mb-2"><span class="fw-bold text-uppercase">Tipo: </span> {{ $transaction->type_id }}</span>
-                    <span class="mb-2"><span class="fw-bold text-uppercase">Gruppo: </span>{{ $transaction->group_id }}</span>
+                    <span class="mb-2"><span class="fw-bold text-uppercase">Tipo: </span> {{ $type }}</span>
+                    <span class="mb-2"><span class="fw-bold text-uppercase">Gruppo: </span>{{ $group }}</span>
                     <span class="mb-2"><span class="fw-bold text-uppercase">Data: </span>{{ $transaction->date }}</span>
                 </div>
             </div>
