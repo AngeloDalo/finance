@@ -54,6 +54,12 @@ class SectionSeeder extends Seeder
                 'name' => 'Lavori Campagna',
             ],
             [
+                'name' => 'Rimborso Dialisi',
+            ],
+            [
+                'name' => 'Bonifico Cantina',
+            ],
+            [
                 'name' => 'Altro',
             ],
         ];

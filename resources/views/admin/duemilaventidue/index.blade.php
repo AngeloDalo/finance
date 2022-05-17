@@ -222,6 +222,24 @@
                         $entrate = $entrate + $transaction->price;
                     }
                 }
+                echo 'Rimborso Dialisi:' . $entrate . '€';
+                @endphp
+                @php
+                $entrate=0;
+                foreach ($transactions_casa as $transaction) {
+                    if($transaction->type_id == 1 && $transaction->section_id == 15) {
+                        $entrate = $entrate + $transaction->price;
+                    }
+                }
+                echo 'Bonifico Cantina:' . $entrate . '€';
+                @endphp
+                @php
+                $entrate=0;
+                foreach ($transactions_casa as $transaction) {
+                    if($transaction->type_id == 1 && $transaction->section_id == 16) {
+                        $entrate = $entrate + $transaction->price;
+                    }
+                }
                 echo 'Altro:' . $entrate . '€';
                 @endphp
             </div>
@@ -348,6 +366,24 @@
                 $uscite=0;
                 foreach ($transactions_casa as $transaction) {
                     if($transaction->type_id == 2 && $transaction->section_id == 14) {
+                        $uscite = $uscite + $transaction->price;
+                    }
+                }
+                echo 'Rimborso Dialisi:' . $uscite . '€';
+                @endphp
+                @php
+                $uscite=0;
+                foreach ($transactions_casa as $transaction) {
+                    if($transaction->type_id == 2 && $transaction->section_id == 15) {
+                        $uscite = $uscite + $transaction->price;
+                    }
+                }
+                echo 'Bonifico Cantina:' . $uscite . '€';
+                @endphp
+                @php
+                $uscite=0;
+                foreach ($transactions_casa as $transaction) {
+                    if($transaction->type_id == 2 && $transaction->section_id == 16) {
                         $uscite = $uscite + $transaction->price;
                     }
                 }
@@ -480,6 +516,24 @@
                         $entrate = $entrate + $transaction->price;
                     }
                 }
+                echo 'Rimborso Dialisi:' . $entrate . '€';
+                @endphp
+                @php
+                $entrate=0;
+                foreach ($transactions_campagna as $transaction) {
+                    if($transaction->type_id == 1 && $transaction->section_id == 15) {
+                        $entrate = $entrate + $transaction->price;
+                    }
+                }
+                echo 'Bonifico Cantina:' . $entrate . '€';
+                @endphp
+                @php
+                $entrate=0;
+                foreach ($transactions_campagna as $transaction) {
+                    if($transaction->type_id == 1 && $transaction->section_id == 16) {
+                        $entrate = $entrate + $transaction->price;
+                    }
+                }
                 echo 'Altro:' . $entrate . '€';
                 @endphp
             </div>
@@ -606,6 +660,24 @@
                 $uscite=0;
                 foreach ($transactions_campagna as $transaction) {
                     if($transaction->type_id == 2 && $transaction->section_id == 14) {
+                        $uscite = $uscite + $transaction->price;
+                    }
+                }
+                echo 'Rimborso Dialisi:' . $uscite . '€';
+                @endphp
+                @php
+                $uscite=0;
+                foreach ($transactions_campagna as $transaction) {
+                    if($transaction->type_id == 2 && $transaction->section_id == 15) {
+                        $uscite = $uscite + $transaction->price;
+                    }
+                }
+                echo 'Bonifico Cantina:' . $uscite . '€';
+                @endphp
+                @php
+                $uscite=0;
+                foreach ($transactions_campagna as $transaction) {
+                    if($transaction->type_id == 2 && $transaction->section_id == 16) {
                         $uscite = $uscite + $transaction->price;
                     }
                 }
