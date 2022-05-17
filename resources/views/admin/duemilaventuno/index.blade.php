@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-12">
                 <!-- TOTALE -->
-                <h1>SALDO TOTALE 2021:
+                <h1 class="text-primary">SALDO TOTALE 2021:
                 @php
                     $saldo=0;
                     foreach ($transactions as $transaction) {
@@ -34,7 +34,7 @@
                         echo $saldo . '€';
                     @endphp
                 </h1>
-                <h3>ENTRATE:
+                <h3 class="text-success">ENTRATE:
                     @php
                     $entrate=0;
                     foreach ($transactions_casa as $transaction) {
@@ -45,7 +45,7 @@
                     echo $entrate . '€';
                     @endphp
                 </h3>
-                <h3>USCITE:
+                <h3 class="text-danger">USCITE:
                     @php
                     $uscite=0;
                     foreach ($transactions_casa as $transaction) {
@@ -71,7 +71,7 @@
                         echo $saldo . '€';
                     @endphp
                 </h1>
-                <h3>ENTRATE:
+                <h3 class="text-success">ENTRATE:
                     @php
                     $entrate=0;
                     foreach ($transactions_campagna as $transaction) {
@@ -82,7 +82,7 @@
                     echo $entrate . '€';
                     @endphp
                 </h3>
-                <h3>USCITE:
+                <h3 class="text-danger">USCITE:
                     @php
                     $uscite=0;
                     foreach ($transactions_campagna as $transaction) {

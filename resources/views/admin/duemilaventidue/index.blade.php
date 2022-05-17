@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-12">
                 <!-- TOTALE -->
-                <h1>SALDO TOTALE 2022:
+                <h1 class="text-primary">SALDO TOTALE 2022:
                 @php
                     $saldo=0;
                     foreach ($transactions as $transaction) {
@@ -20,7 +20,7 @@
             </div>
         </div>
         <div class="row mt-5">
-            <div class="col-5">
+            <div class="col-12 col-md-5">
                 <!-- CASA -->
                 <h2>SALDO CASA:
                     @php
@@ -34,7 +34,7 @@
                         echo $saldo . '€';
                     @endphp
                 </h2>
-                <h3>ENTRATE:
+                <h3 class="text-success">ENTRATE:
                     @php
                     $entrate=0;
                     foreach ($transactions_casa as $transaction) {
@@ -45,7 +45,7 @@
                     echo $entrate . '€';
                     @endphp
                 </h3>
-                <h3>USCITE:
+                <h3 class="text-danger">USCITE:
                     @php
                     $uscite=0;
                     foreach ($transactions_casa as $transaction) {
@@ -57,9 +57,9 @@
                     @endphp
                 </h3>
             </div>
-            <div class="col-5">
+            <div class="col-12 col-md-5">
                 <!-- CAMPAGNA -->
-                <h2>SALDO CAMPAGNA
+                <h2>SALDO CAMPAGNA:
                     @php
                         $saldo=0;
                         foreach ($transactions_campagna as $transaction) {
@@ -71,7 +71,7 @@
                         echo $saldo . '€';
                     @endphp
                 </h2>
-                <h3>ENTRATE:
+                <h3 class="text-success">ENTRATE:
                     @php
                     $entrate=0;
                     foreach ($transactions_campagna as $transaction) {
@@ -82,7 +82,7 @@
                     echo $entrate . '€';
                     @endphp
                 </h3>
-                <h3>USCITE:
+                <h3 class="text-danger">USCITE:
                     @php
                     $uscite=0;
                     foreach ($transactions_campagna as $transaction) {
@@ -96,7 +96,7 @@
             </div>
         </div>
         <div class="row mt-5">
-            <div class="col-2 me-5">
+            <div class="col-12 col-md-2 me-5">
                 <h2>ENTRATE CASA</h2>
                 @php
                 $entrate=0;
@@ -225,7 +225,7 @@
                 echo 'Altro:' . $entrate . '€';
                 @endphp
             </div>
-            <div class="col-2 me-5">
+            <div class="col-12 col-md-2 me-5">
                 <h2>USCITE CASA</h2>
                 @php
                 $uscite=0;
@@ -354,7 +354,7 @@
                 echo 'Altro:' . $uscite . '€';
                 @endphp
             </div>
-            <div class="col-2 me-5">
+            <div class="col-12 col-md-2 me-5">
                 <h2>ENTRATE CAMPAGNA</h2>
                 @php
                 $entrate=0;
@@ -483,7 +483,7 @@
                 echo 'Altro:' . $entrate . '€';
                 @endphp
             </div>
-            <div class="col-2">
+            <div class="col-12 col-md-2">
                 <h2>USCITE CAMPAGNA</h2>
                 @php
                 $uscite=0;

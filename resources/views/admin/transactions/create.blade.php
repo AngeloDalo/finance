@@ -39,7 +39,7 @@
                     <div class="container">
                         <div class="d-flex row">
                             @foreach ($sections as $section)
-                                <div class="form-check col-3">
+                                <div class="form-check col-12 col-md-3">
                                     <input class="form-check-input" type="checkbox" value="{{ $section->id }}"
                                         name="sections[]"
                                         {{ in_array($section->id, old('sections', [])) ? 'checked' : '' }}>
@@ -62,7 +62,7 @@
                     <div class="container">
                         <div class="d-flex row">
                             @foreach ($groups as $group)
-                                <div class="form-check col-3">
+                                <div class="form-check col-12 col-md-3">
                                     <input class="form-check-input" type="checkbox" value="{{ $group->id }}"
                                         name="groups[]"
                                         {{ in_array($group->id, old('groups', [])) ? 'checked' : '' }}>
@@ -94,7 +94,7 @@
                     <div class="container">
                         <div class="d-flex row">
                             @foreach ($types as $type)
-                                <div class="form-check col-3">
+                                <div class="form-check col-12 col-md-3">
                                     <input class="form-check-input" type="checkbox" value="{{ $type->id }}"
                                         name="types[]"
                                         {{ in_array($type->id, old('types', [])) ? 'checked' : '' }}>

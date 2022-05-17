@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-12">
                 <!-- TOTALE -->
-                <h1>SALDO TOTALE:
+                <h1 class="text-primary">SALDO TOTALE:
                 @php
                     $saldo=0;
                     foreach ($transactions as $transaction) {
@@ -20,7 +20,7 @@
             </div>
         </div>
         <div class="row mt-5">
-            <div class="col-5">
+            <div class="col-12 col-md-6">
                 <!-- CASA -->
                 <h1>SALDO CASA:
                     @php
@@ -34,7 +34,7 @@
                         echo $saldo . '€';
                     @endphp
                 </h1>
-                <h3>ENTRATE:
+                <h3 class="text-success">ENTRATE:
                     @php
                     $entrate=0;
                     foreach ($transactions_casa as $transaction) {
@@ -45,7 +45,7 @@
                     echo $entrate . '€';
                     @endphp
                 </h3>
-                <h3>USCITE:
+                <h3 class="text-danger">USCITE:
                     @php
                     $uscite=0;
                     foreach ($transactions_casa as $transaction) {
@@ -57,7 +57,7 @@
                     @endphp
                 </h3>
             </div>
-            <div class="col-5">
+            <div class="col-12 col-md-6">
                 <!-- CAMPAGNA -->
                 <h1>SALDO CAMPAGNA
                     @php
@@ -71,7 +71,7 @@
                         echo $saldo . '€';
                     @endphp
                 </h1>
-                <h3>ENTRATE:
+                <h3 class="text-success">ENTRATE:
                     @php
                     $entrate=0;
                     foreach ($transactions_campagna as $transaction) {
@@ -82,7 +82,7 @@
                     echo $entrate . '€';
                     @endphp
                 </h3>
-                <h3>USCITE:
+                <h3 class="text-danger">USCITE:
                     @php
                     $uscite=0;
                     foreach ($transactions_campagna as $transaction) {

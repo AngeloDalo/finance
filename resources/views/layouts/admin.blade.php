@@ -20,10 +20,10 @@
 
 <body>
     <div id="app">
-        <div class="row justify-content-between">
-            <div class="col-2">
-                <nav id='sidebarMenu' class='bg-light sidebar me-5'>
-                    <div class="d-flex flex-column flex-shrink-0 p-3 bg-light border border-success rounded-3" style="position: fixed; height: 100%">
+        <div class="row">
+            <div class="d-none d-lg-block col-2 me-5">
+                <nav id='sidebarMenu' class='bg-light sidebar me-2'>
+                    <div class="d-flex flex-column flex-shrink-0 p-1 bg-light border border-success rounded-3" style="position: fixed; height: 100%">
                       <ul class="nav nav-pills flex-column mb-auto">
                         <li>
                             <a href="{{ url('/') }}"><img src="{{ asset('img/Cattura.png') }}" alt="logo" class="" style="width: 150px"></a>
@@ -53,7 +53,34 @@
                     </div>
                   </nav>
             </div>
-            <div class="col-9 mt-5">
+            <div class="d-block d-lg-none col-12">
+                <nav class="navbar navbar-success bg-white">
+                    <ul class="nav nav-pills flex-row mb-auto">
+                        <li class="nav-item">
+                          <a href="{{ url('/') }}" class="nav-link text-success" aria-current="page"><i class="fas fa-home" style="color:hsl(143, 95%, 22%)"></i>Home</a>
+                        </li>
+                        <li>
+                          <a href="{{ route('transactions.index') }}" class="nav-link text-success"><i class="fas fa-money-bill" style="color:hsl(143, 95%, 22%)"></i>LE MIE TRANSAZIONI</a>
+                        </li>
+                        <li>
+                          <a href="{{ route('transactions.create') }}" class="nav-link text-success"><i class="fas fa-plus" style="color:hsl(143, 95%, 22%)"></i>AGGIUNGI TRANSAZIONE</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('casa.index') }}" class="nav-link text-success"><i class="fas fa-home" style="color:hsl(143, 95%, 22%)"></i>CASA</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('campagna.index') }}" class="nav-link text-success"><i class="fas fa-wine-bottle" style="color:hsl(143, 95%, 22%)"></i>CAMPAGNA</a>
+                        </li>
+                        <li>
+                            <a href="{{ url('http://127.0.0.1:8000/ventidue') }}" class="nav-link text-success"><i class="fas fa-wine-bottle" style="color:hsl(143, 95%, 22%)"></i>2022</a>
+                        </li>
+                        <li>
+                            <a href="{{ url('http://127.0.0.1:8000/ventuno') }}" class="nav-link text-success"><i class="fas fa-wine-bottle" style="color:hsl(143, 95%, 22%)"></i>2021</a>
+                        </li>
+                      </ul>
+                </nav>
+            </div>
+            <div class="col-12 col-lg-9">
                 @yield('content')
             </div>
         </div>
