@@ -43,6 +43,12 @@
                         <li>
                             <a href="{{ route('campagna.index') }}" class="nav-link text-success"><i class="fas fa-wine-bottle" style="color:hsl(143, 95%, 22%)"></i>CAMPAGNA</a>
                         </li>
+                        <li>
+                            <a href="{{ url('http://127.0.0.1:8000/ventidue') }}" class="nav-link text-success"><i class="fas fa-wine-bottle" style="color:hsl(143, 95%, 22%)"></i>2022</a>
+                        </li>
+                        <li>
+                            <a href="{{ url('http://127.0.0.1:8000/ventuno') }}" class="nav-link text-success"><i class="fas fa-wine-bottle" style="color:hsl(143, 95%, 22%)"></i>2021</a>
+                        </li>
                       </ul>
                     </div>
                   </nav>
