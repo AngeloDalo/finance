@@ -13,14 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('guest.welcome');
-});
-
+Route::resource('/', 'HomeController');
 Route::resource('transactions', 'TotaleController');
 Route::resource('casa', 'CasaController');
 Route::resource('campagna', 'CampagnaController');
 
-Route::get('{any?}', function ($name = null) {
-    return view('guest.welcome');
-})->where('any', '.*');

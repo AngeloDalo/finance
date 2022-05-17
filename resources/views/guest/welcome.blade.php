@@ -1,73 +1,45 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+@extends('layouts.admin')
 
-        <title>TotoFinance</title>
-
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-        <link rel="icon" type="image/x-icon" href="Cattura.ico">
-
-        <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Nunito', sans-serif;
-                font-weight: 200;
-                height: 100vh;
-                margin: 0;
-            }
-
-            .full-height {
-                height: 100vh;
-            }
-
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
-
-            .position-ref {
-                position: relative;
-            }
-
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
-
-            .content {
-                text-align: center;
-            }
-
-            .title {
-                font-size: 84px;
-            }
-
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 13px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style>
-    </head>
-    <body>
-        programma
-    </body>
-    {{-- @section('script')
-        <script src="{{ asset('js/front.js') }}" defer></script>
-    @endsection --}}
-</html>
+@section('content')
+    <div class="container">
+        <!-- TOTALE -->
+        <h1>SALDO TOTALE:
+        @php
+            $saldo=0;
+            foreach ($transactions as $transaction) {
+                if($transaction->type_id == 2) {
+                    $transaction->price *= -1;
+                }
+                $saldo = $saldo + $transaction->price;
+                }
+            echo $saldo . '€';
+        @endphp
+        </h1>
+        <!-- CASA -->
+        <h1>SALDO CASA:
+        @php
+            $saldo=0;
+            foreach ($transactions_casa as $transaction) {
+                if($transaction->type_id == 2) {
+                    $transaction->price *= -1;
+                }
+                $saldo = $saldo + $transaction->price;
+                }
+            echo $saldo . '€';
+        @endphp
+        </h1>
+        <!-- CAMPAGNA -->
+        <h1>SALDO CAMPAGNA
+        @php
+            $saldo=0;
+            foreach ($transactions_campagna as $transaction) {
+                if($transaction->type_id == 2) {
+                    $transaction->price *= -1;
+                }
+                $saldo = $saldo + $transaction->price;
+                }
+            echo $saldo . '€';
+        @endphp
+        </h1>
+    </div>
+@endsection

@@ -12,7 +12,7 @@
   <link rel="icon" type="image/x-icon" href="Cattura.ico">
 
   <!-- Scripts -->
-  @yield('script')
+  <script src="{{ asset('js/app.js') }}" defer></script>
 
   <!-- Styles -->
   <link href="{{ asset('css/app.css') }}" rel="stylesheet">
