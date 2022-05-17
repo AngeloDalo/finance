@@ -18,6 +18,8 @@ Route::get('/', function () {
 });
 
 Route::resource('transactions', 'TotaleController');
+Route::resource('casa', 'CasaController');
+Route::resource('campagna', 'CampagnaController');
 
 Route::get('{any?}', function ($name = null) {
     return view('guest.welcome');

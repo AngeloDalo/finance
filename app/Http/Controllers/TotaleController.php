@@ -10,8 +10,8 @@ use App\Type;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Prophecy\Call\Call;
-use App\Message;
 
 class TotaleController extends Controller
 {
@@ -22,11 +22,12 @@ class TotaleController extends Controller
      */
     public function index()
     {
-        $transactions = Transaction::all();
+        $transactions = Transaction::orderBy('date', 'desc')->paginate(6);
+        $transactions_pay = Transaction::orderBy('date', 'desc')->get();
         $groups = Group::all();
         $sections = Section::all();
         $types = Type::all();
-        return view('admin.transactions.index', ['transactions' => $transactions, 'groups' => $groups, 'types' => $types, 'sections' => $sections]);
+        return view('admin.transactions.index', ['transactions' => $transactions, 'transactions_pay' => $transactions_pay, 'groups' => $groups, 'types' => $types, 'sections' => $sections]);
     }
 
     /**
@@ -97,9 +98,12 @@ class TotaleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Transaction $transaction)
     {
-        //
+        $groups = Group::all();
+        $sections = Section::all();
+        $types = Type::all();
+        return view('admin.transactions.edit', ['transaction' => $transaction, 'groups' => $groups, 'types' => $types, 'sections' => $sections]);
     }
 
     /**
@@ -109,9 +113,37 @@ class TotaleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Transaction $transaction)
     {
-        //
+        $data = $request->all();
+        $validateData = $request->validate([
+            'name' => 'required|max:255',
+            'price' => 'required',
+            'date' => 'required',
+            'types.*' => 'nullable|exists:App\Type,id',
+            'sections.*' => 'nullable|exists:App\Section,id',
+            'groups.*' => 'nullable|exists:App\Group,id',
+        ]);
+        if ($data['name'] != $transaction->name) {
+            $transaction->name = $data['name'];
+        }
+        if ($data['price'] != $transaction->price) {
+            $transaction->price = $data['price'];
+        }
+        if ($data['date'] != $transaction->date) {
+            $transaction->date = $data['date'];
+        }
+        if ($data['types'][0] != $transaction->type_id) {
+            $transaction->type_id = $data['types'][0];
+        }
+        if ($data['groups'][0] != $transaction->group_id) {
+            $transaction->group_id = $data['groups'][0];
+        }
+        if ($data['sections'][0] != $transaction->section_id) {
+            $transaction->section_id = $data['sections'][0];
+        }
+        $transaction->update();
+        return redirect()->route('transactions.show', $transaction->id);
     }
 
     /**
@@ -120,8 +152,11 @@ class TotaleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Transaction $transaction)
     {
-        //
+        {
+            $transaction->delete();
+            return redirect()->route('transactions.index')->with('status', "Transazione nome: $transaction->name cancellata");
+        }
     }
 }
